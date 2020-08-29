@@ -1,0 +1,14 @@
+---
+version: 5
+defaults:
+  datadir: data
+  data_hash: yaml_data
+hierarchy:
+  - name: "Other YAML Hierarchy levels"
+    paths:
+      - "%{::hostname}.yaml"
+      - "%{::kiosk.institution}/%{::kiosk.branch}/%{::kiosk.gallery}/%{::kiosk.screen}.yaml"
+      - "%{::kiosk.institution}/%{::kiosk.branch}/%{::kiosk.gallery}/common.yaml"
+      - "%{::kiosk.institution}/%{::kiosk.branch}/common.yaml"
+      - "%{::kiosk.institution}/common.yaml"
+      - "common.yaml"
