@@ -1,0 +1,29 @@
+[Unit]
+Description=Nodel
+After=multi-user.target
+[Service]
+Type=forking
+Environment=JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+<%- unless @nodel['environment'].nil? -%>
+  <%- @nodel['environment'].each do |val| -%>
+  Environment="<%= val %>"
+  <%- end -%>
+<%- end -%>
+RestartSec=30
+Restart=on-failure
+User=root
+ExecStart=/usr/bin/jsvc \
+  -cp /usr/share/java/commons-daemon.jar:/opt/nodel/nodel.jar \
+  -cwd /opt/nodel \
+  -user root \
+  -java-home ${JAVA_HOME} \
+  -pidfile /var/run/nodel.pid \
+  -errfile SYSLOG \
+  -outfile SYSLOG \
+  org.nodel.nodelhost.Service
+ExecStop=/usr/bin/jsvc \
+  -pidfile /var/run/nodel.pid \
+  -stop \
+  org.nodel.nodelhost.Service
+[Install]
+WantedBy=multi-user.target
