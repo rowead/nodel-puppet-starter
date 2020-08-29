@@ -1,0 +1,54 @@
+{
+  "name": "puppet-unattended_upgrades",
+  "version": "5.1.0",
+  "author": "Vox Pupuli",
+  "summary": "Provides an interface for managing Apt unattended_upgrades with Puppet",
+  "license": "Apache-2.0",
+  "source": "https://github.com/voxpupuli/puppet-unattended_upgrades.git",
+  "project_page": "https://github.com/voxpupuli/puppet-unattended_upgrades",
+  "issues_url": "https://github.com/voxpupuli/puppet-unattended_upgrades/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.13.1 < 7.0.0"
+    },
+    {
+      "name": "puppetlabs/apt",
+      "version_requirement": ">= 2.2.0 < 8.0.0"
+    }
+  ],
+  "data_provider": null,
+  "tags": [
+    "unattended-upgrades",
+    "unattended_upgrades",
+    "apt",
+    "patching",
+    "security",
+    "debian"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "8",
+        "9",
+        "10"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "16.04",
+        "18.04",
+        "19.10",
+        "20.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 5.5.8 < 7.0.0"
+    }
+  ]
+}
