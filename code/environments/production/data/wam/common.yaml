@@ -1,0 +1,83 @@
+---
+# Config settings for all of WAM
+classes:
+  - kiosk::packages
+  - kiosk::users
+
+kiosk::packages:
+  'aisleriot':
+    ensure: purged
+  'apport-gtk':
+    ensure: purged
+  'apport-kde':
+    ensure: purged
+  'arandr':
+    ensure: installed
+  'chromium-browser':
+    ensure: installed
+  'curl':
+    ensure: installed
+  'deja-dup':
+    ensure: purged
+  'firefox':
+    ensure: purged
+  'gdebi-core':
+    ensure: present
+  'git':
+    ensure: installed
+  'httping':
+    ensure: installed
+  'jq':
+    ensure: installed
+  'libreoffice-core':
+    ensure: purged
+  'libnss3-tools':
+    ensure: installed
+  'notify-osd':
+    ensure: installed
+  'openbox':
+    ensure: installed
+  'openssh-server':
+    ensure: installed
+  'ruby':
+    ensure: installed
+  'thunderbird':
+    ensure: purged
+  'triggerhappy':
+    ensure: installed
+  'unclutter':
+    ensure: installed
+  'update-manager':
+    ensure: purged
+  'update-notifier':
+    ensure: purged
+  'whoopsie':
+    ensure: purged
+  'xdotool':
+    ensure: installed
+  'exfat-fuse':
+    ensure: installed
+  'exfat-utils':
+    ensure: installed
+
+kiosk::packages::pins:
+  'puppet-agent':
+    ensure: present
+    package_version: '1.10.*'
+    priority: 1001
+
+# Common pool of users available to create on servers
+kiosk::users:
+  'kiosk':
+    password: 'kiosk'
+    ensure: present
+    gid: 'kiosk'
+    groups:
+      - 'nopasswdlogin'
+      - 'input'
+    home: '/home/kiosk'
+    shell: '/bin/bash'
+    uid: 601
+    autologin: true
+    autologin_timeout: 20
+    autokeygen: true

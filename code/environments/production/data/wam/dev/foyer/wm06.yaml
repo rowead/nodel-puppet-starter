@@ -1,0 +1,8 @@
+---
+
+kiosk::packages:
+  'php7.2-cli':
+    ensure: installed
+
+nodel:
+  nodel_jar: 'https://github.com/museumsvictoria/nodel/releases/download/v2.1.1-release391/nodelhost-release-2.1.1-rev391.jar'

@@ -1,0 +1,28 @@
+---
+classes:
+  - kiosk
+  - nodel
+  - ntp
+  - timezone
+  - unattended_upgrades
+
+nodel:
+  service_ensure: running
+  manage_config: false
+  environment:
+    - "DISPLAY=:0"
+    - "XAUTHORITY=/home/kiosk/.Xauthority"
+  nodel_jar: 'https://github.com/museumsvictoria/nodel/releases/download/v2.0.7-rc1/nodelhost-2.0.7-rc1.jar'
+
+ntp::package_ensure: latest
+ntp::enable: true
+ntp::iburst_enable: false
+ntp::servers:
+  - 0.au.pool.ntp.org
+  - 1.au.pool.ntp.org
+  - 2.au.pool.ntp.org
+  - 3.au.pool.ntp.org
+
+timezone::timezone: Australia/Perth
+
+unattended_upgrades::package_ensure: installed
